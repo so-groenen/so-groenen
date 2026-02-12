@@ -1,32 +1,19 @@
-name: Update README cards
+name: GitHub Readme Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs once daily at midnight
-  workflow_dispatch:
+    - cron: '0 0 * * *' # S'exécute chaque jour à minuit
+  workflow_dispatch: # Permet de le lancer manuellement
 
 jobs:
-  build:
+  stats:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Generate stats card
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Generate Stats
+        uses: stats-organization/github-readme-stats-action@v1
         with:
-          card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate top languages card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: top-langs
-          options: username=so-groenen&layout=compact&langs_count=6
-          token: ${{ secrets.GITHUB_TOKEN }}
-        
-         
+          gh_token: ${{ secrets.MY_GH_TOKEN }}
+          output_dir: stats-cards 
