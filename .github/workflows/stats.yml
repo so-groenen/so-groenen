@@ -1,17 +1,19 @@
-name: GitHub Readme Stats
+name: Update README cards
 
 on:
   schedule:
-    - cron: '0 0 * * *' # S'exécute chaque jour à minuit
-  workflow_dispatch: # Permet de le lancer manuellement
+    - cron: "0 0 * * *" # Runs once daily at midnight
+  workflow_dispatch:
 
 jobs:
-  stats:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
 
       - name: Generate stats card
         uses: readme-tools/github-readme-stats-action@v1
@@ -20,4 +22,3 @@ jobs:
           options: username=${{ github.repository_owner }}&show_icons=true
           path: profile/stats.svg
           token: ${{ secrets.MY_GH_TOKEN }}
- 
