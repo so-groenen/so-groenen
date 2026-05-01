@@ -1,1 +1,1 @@
-![Top Languages](./profile/top-langs.svg)
+[![Pranesh's GitHub stats](https://github-readme-stats-fast.vercel.app/api/top-langs/?username=so-groenen&hide=javascript,html,CMake&theme=synthwave))](https://github.com/pranesh-2005/github-readme-stats-fast)
